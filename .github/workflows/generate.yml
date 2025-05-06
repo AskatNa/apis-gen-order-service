@@ -35,6 +35,8 @@ jobs:
       - name: Clone Proto Files Repository
         run: |
           git clone https://github.com/AskatNa/apis-order-service.git proto-src
+          git clone https://github.com/AskatNa/apis-inventory-service.git inventory-src
+
 
       - name: Generate Go Code from Proto Files
         run: |
