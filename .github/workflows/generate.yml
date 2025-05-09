@@ -35,8 +35,6 @@ jobs:
       - name: Clone Proto Files Repository
         run: |
           git clone https://github.com/AskatNa/apis-order-service.git proto-src
-          git clone https://github.com/AskatNa/apis-inventory-service.git inventory-src
-
 
       - name: Generate Go Code from Proto Files
         run: |
@@ -55,7 +53,7 @@ jobs:
           # Generate Go files from all .proto definitions
           echo "Generating .pb.go and _grpc.pb.go files..."
           find . -name "*.proto" -exec \
-            protoc -I. \
+            protoc -I. -Iexternal/inventory \
               --go_out=paths=source_relative:. \
               --go-grpc_out=paths=source_relative:. \
               {} +
